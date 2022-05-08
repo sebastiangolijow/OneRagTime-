@@ -12,7 +12,7 @@ def make_cashcall(pk):
     investor_serializer = InvestorSerializer(investor_response, many=True)
     print(investor_serializer.data[0]['id'])
     new_cash_call = Cashcall.objects.create(total_amount=total_amount, IBAN=extract_iban(investor_serializer.data[0]['credit']),
-    email_send='pending', date_added=datetime.date.today(), invoice_status='sent')
+    email_send='pending', date_added=datetime.date.today(), invoice_status='validated')
     new_cash_call.save()
     cashcall = CashcallSerializer(new_cash_call)
     print(cashcall.data)
