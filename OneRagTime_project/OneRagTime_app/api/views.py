@@ -55,6 +55,6 @@ class SendEmailEndpoint(ModelViewSet):
         investor_response = Investor.objects.filter(id=params['pk'])
         investor_serializer = InvestorSerializer(investor_response, many=True)
         send_mail(serializer.data, 'Cashcall', 'seba@oneragtime.com', investor_serializer.data[0]['email'])
-        Cashcall.objects.filter(investor_id=params['pk'], many=True)[0].update(invoice_status='sent')
+        Cashcall.objects.filter(investor_id=params['pk'], many=True)[0].update(invoice_status='sent', email_send='sent')
         return Response('Email sent')
     
