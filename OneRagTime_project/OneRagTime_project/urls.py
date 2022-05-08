@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from  OneRagTime_app.api.router import router_endpoint_investment, router_endpoint_investor, router_endpoint_bill, router_endpoint_cashcall
+from  OneRagTime_app.api.router import router_endpoint_investment, router_endpoint_investor, router_endpoint_bill, router_endpoint_cashcall, router_endpoint_generate_bills, router_endpoint_send_email
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -23,5 +23,6 @@ urlpatterns = [
     path('api/', include(router_endpoint_investor.urls)),
     path('api/', include(router_endpoint_bill.urls)),
     path('api/', include(router_endpoint_cashcall.urls)),
-
+    path('api/', include(router_endpoint_generate_bills.urls)),
+    path('api/', include(router_endpoint_send_email.urls)),
 ]

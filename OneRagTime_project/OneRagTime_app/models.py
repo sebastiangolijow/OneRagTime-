@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 class Investments(models.Model):
@@ -6,7 +7,7 @@ class Investments(models.Model):
     startup_name = models.CharField(max_length=255)
     invested_amount = models.IntegerField()
     percentage_fees = models.IntegerField()
-    date_added = models.DateField(auto_created=True)
+    date_added = models.DateField(default=datetime.date.today)
     fees_type = models.CharField(max_length=255)
 
 class Investor(models.Model):
@@ -20,12 +21,12 @@ class Bill(models.Model):
     investor_id = models.IntegerField()
     investment_id = models.IntegerField()
     fees_amount = models.IntegerField()
-    date_added = models.DateField()
+    date_added = models.DateField(default=datetime.date.today)
     fees_type = models.CharField(max_length=255)
 
 class Cashcall(models.Model):
     total_amount = models.IntegerField()
-    IBAN = models.IntegerField()
+    IBAN = models.CharField(max_length=255)
     email_send = models.CharField(max_length=255)
-    date_added = models.DateField()
+    date_added = models.DateField(default=datetime.date.today)
     invoice_status = models.CharField(max_length=255)
